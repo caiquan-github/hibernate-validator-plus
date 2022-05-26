@@ -1,13 +1,8 @@
 package com.kwon.validatorplus.constraintvalidators;
 
-import cn.hutool.core.date.DateException;
-import cn.hutool.core.date.DateUtil;
-import com.kwon.validatorplus.annotation.IDate;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.lang.annotation.Annotation;
-import java.util.Date;
 import java.util.regex.Pattern;
 
 /**
@@ -15,15 +10,15 @@ import java.util.regex.Pattern;
  */
 public abstract class AbstractIPatternValidator<T extends Annotation> implements ConstraintValidator<T, CharSequence> {
 
-    private  String pattern="";
+    private  String regexp ="";
 
 
 
     @Override
     public void initialize(T constraintAnnotation) {
         try {
-            pattern=constraintAnnotation.getClass().getField("regexp").toString();
-            System.out.println(pattern);
+            regexp =constraintAnnotation.getClass().getField("regexp").toString();
+            System.out.println(regexp);
 
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
@@ -36,7 +31,7 @@ public abstract class AbstractIPatternValidator<T extends Annotation> implements
     @Override
     public boolean isValid(CharSequence charSequence, ConstraintValidatorContext context) {
         if (charSequence != null && charSequence.toString().trim().length() > 0) {
-            return Pattern.matches(pattern, charSequence);
+            return Pattern.matches(regexp, charSequence);
         }
         return true;
     }

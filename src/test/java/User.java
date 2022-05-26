@@ -26,7 +26,7 @@ public class User {
     private String ip;
 
 
-    @IDomain(groups = PostGroup.class,regexp = "2222222")
+    @IDomain(groups = PostGroup.class)
     private String domain;
 
     public String getDomain() {

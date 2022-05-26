@@ -12,7 +12,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * String Type Date Validator
  *
  * @author Kwon
  */

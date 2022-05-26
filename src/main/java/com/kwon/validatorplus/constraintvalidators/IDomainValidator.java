@@ -10,7 +10,6 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Pattern;
 
 /**
- * String Type Date Validator
  *
  * @author Kwon
  */

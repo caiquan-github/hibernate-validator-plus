@@ -1,26 +1,27 @@
 import com.kwon.validatorplus.annotation.*;
-import com.kwon.validatorplus.groups.PostDefaultGroup;
+import com.kwon.validatorplus.groups.PostGroup;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.groups.Default;
 import java.util.Date;
 
 /**
  * @author Kwon
  */
 public class User {
-    @NotBlank(groups = PostDefaultGroup.class,message = "不能为空")
+    @NotBlank(groups = PostGroup.class,message = "不能为空")
     private String name;
     private Integer age;
     private Integer sex;
-    @IDate(groups = PostDefaultGroup.class,message = "时间错误d1",min = "202204",max = "202206")
+    @IDate(groups = PostGroup.class,message = "时间错误d1",min = "202204",max = "202206")
     private Date d1;
-    @IDate (groups = PostDefaultGroup.class, message = "时间错误d2",min = "202204",max = "202206")
+    @IDate (groups = {PostGroup.class, Default.class}, message = "日期需要大于等于202204 小于等于202206",min = "202204",max = "202206")
     private String d2;
-    @IPhone(groups = PostDefaultGroup.class)
+    @IPhone(groups = PostGroup.class)
     private String phone;
-    @IIpAddress(groups = PostDefaultGroup.class)
+    @IIpAddress(groups = PostGroup.class)
     private String ip;
-    @IDomain(groups = PostDefaultGroup.class)
+    @IDomain(groups = PostGroup.class)
     private String domain;
 
     @IIdCard

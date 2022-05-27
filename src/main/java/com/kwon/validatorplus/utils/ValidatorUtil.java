@@ -1,9 +1,6 @@
 package com.kwon.validatorplus.utils;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+import javax.validation.*;
 import javax.validation.groups.Default;
 import java.util.Set;
 
@@ -14,29 +11,28 @@ import java.util.Set;
 
 public class ValidatorUtil {
 
-    public static Validator validator;
+    private static final Validator validator =
+            Validation.buildDefaultValidatorFactory().getValidator();
 
-    static {
-        ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
-        validator = vf.getValidator();
-    }
     public static void validate(Object object) {
-        validate(object, Default.class);
-
-    }
-
-    public static void validate(Object object,Class group){
-        //TODO 2022/5/26 11:44 Kwon  validate method returnValue all property   whether update one data
-        Set<ConstraintViolation<Object>> set = validator.validate(object,group);
+        Set<ConstraintViolation<Object>> set = validator.validate(object);
         for (ConstraintViolation constraintViolation : set) {
-            throw new RuntimeException(constraintViolation.getMessage());
+            throw new ValidationException(constraintViolation.getMessage());
         }
     }
 
-    public static void validateProperty(Object object,String propertyName,Class group){
-        Set<ConstraintViolation<Object>> set = validator.validateProperty(object,propertyName,group);
+    public static void validate(Object object,Class<?>... groups){
+        //TODO 2022/5/26 11:44 Kwon  validate method returnValue all property   whether update one data
+        Set<ConstraintViolation<Object>> set = validator.validate(object,groups);
         for (ConstraintViolation constraintViolation : set) {
-            throw new RuntimeException(constraintViolation.getMessage());
+            throw new ValidationException(constraintViolation.getMessage());
+        }
+    }
+
+    public static void validateProperty(Object object,String propertyName,Class<?>... groups){
+        Set<ConstraintViolation<Object>> set = validator.validateProperty(object,propertyName,groups);
+        for (ConstraintViolation constraintViolation : set) {
+            throw new ValidationException(constraintViolation.getMessage());
         }
     }
 

@@ -20,7 +20,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Repeatable(IDomain.List.class)
 public @interface IDomain {
 
-    String message() default "domain wrong format";
+    String message() default "域名不合法";
 
     String regexp() default "[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\\.?";
 
@@ -30,9 +30,8 @@ public @interface IDomain {
     Class<? extends Payload>[] payload() default { };
 
     /**
-     * Defines several {@code @IDate} constraints on the same element.
      *
-     * @see IDate
+     * @see IDomain
      */
     @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
     @Retention(RUNTIME)

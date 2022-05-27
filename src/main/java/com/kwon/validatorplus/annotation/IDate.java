@@ -25,7 +25,7 @@ import javax.validation.Payload;
 @Retention(RUNTIME)
 @Repeatable(IDate.List.class)
 public @interface IDate {
-    String message() default "date wrong format";
+    String message() default "日期不合法";
 
     /**
     * min date

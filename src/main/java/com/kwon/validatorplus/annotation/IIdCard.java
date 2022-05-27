@@ -8,7 +8,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
@@ -18,12 +17,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = { })
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
-@Repeatable(IIpAddress.List.class)
-public @interface IIpAddress {
+@Repeatable(IIdCard.List.class)
+public @interface IIdCard {
 
-    String message() default "ip地址不合法";
+    String message() default "身份证不合法";
 
-    String regexp() default "^((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})(\\.((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})){3}$";
+    String regexp() default "^\\d{15}|\\d{18}$";
 
 
     Class<?>[] groups() default { };
@@ -32,12 +31,12 @@ public @interface IIpAddress {
 
     /**
      *
-     * @see IIpAddress
+     * @see IIdCard
      */
     @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
     @Retention(RUNTIME)
     @Documented
     public @interface List {
-        IIpAddress[] value();
+        IIdCard[] value();
     }
 }

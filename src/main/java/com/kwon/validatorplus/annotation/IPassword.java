@@ -8,7 +8,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
@@ -18,12 +17,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = { })
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
-@Repeatable(IIpAddress.List.class)
-public @interface IIpAddress {
+@Repeatable(IPassword.List.class)
+public @interface IPassword {
 
-    String message() default "ip地址不合法";
+    String message() default "密码不合法 以字母开头，长度在6~18之间，只能包含字母、数字和下划线";
 
-    String regexp() default "^((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})(\\.((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})){3}$";
+    String regexp() default "^[a-zA-Z]\\w{5,17}$";
 
 
     Class<?>[] groups() default { };
@@ -32,12 +31,12 @@ public @interface IIpAddress {
 
     /**
      *
-     * @see IIpAddress
+     * @see IPassword
      */
     @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
     @Retention(RUNTIME)
     @Documented
     public @interface List {
-        IIpAddress[] value();
+        IPassword[] value();
     }
 }

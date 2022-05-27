@@ -4,6 +4,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import javax.validation.groups.Default;
 import java.util.Set;
 
 /**
@@ -18,6 +19,10 @@ public class ValidatorUtil {
     static {
         ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
         validator = vf.getValidator();
+    }
+    public static void validate(Object object) {
+        validate(object, Default.class);
+
     }
 
     public static void validate(Object object,Class group){

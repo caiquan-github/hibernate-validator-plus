@@ -21,7 +21,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Repeatable(IPhone.List.class)
 public @interface IPhone {
 
-    String message() default "phone wrong format";
+    String message() default "手机不合法";
 
     String regexp() default "^((13[0-9])|(15[^4,\\D])|(14[57])|(17[0])|(17[7])|(18[0,0-9]))\\d{8}$";
 
@@ -31,9 +31,8 @@ public @interface IPhone {
     Class<? extends Payload>[] payload() default { };
 
     /**
-     * Defines several {@code @IDate} constraints on the same element.
      *
-     * @see IDate
+     * @see IPhone
      */
     @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
     @Retention(RUNTIME)

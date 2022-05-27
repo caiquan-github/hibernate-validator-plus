@@ -20,7 +20,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Repeatable(IAccount.List.class)
 public @interface IAccount {
 
-    String message() default "phone wrong format";
+    String message() default "账号不合法 字母开头，允许5-16字节，允许字母数字下划线";
 
     String regexp() default "^[a-zA-Z][a-zA-Z0-9_]{4,15}$";
 
@@ -30,9 +30,8 @@ public @interface IAccount {
     Class<? extends Payload>[] payload() default { };
 
     /**
-     * Defines several {@code @IDate} constraints on the same element.
      *
-     * @see IDate
+     * @see IAccount
      */
     @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
     @Retention(RUNTIME)

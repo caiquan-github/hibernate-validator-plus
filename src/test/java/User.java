@@ -1,8 +1,5 @@
-import com.kwon.validatorplus.annotation.IDate;
-import com.kwon.validatorplus.annotation.IDomain;
-import com.kwon.validatorplus.annotation.IIpAddress;
-import com.kwon.validatorplus.annotation.IPhone;
-import com.kwon.validatorplus.groups.PostGroup;
+import com.kwon.validatorplus.annotation.*;
+import com.kwon.validatorplus.groups.PostDefaultGroup;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
@@ -11,23 +8,52 @@ import java.util.Date;
  * @author Kwon
  */
 public class User {
-    @NotBlank(groups = PostGroup.class,message = "不能为空")
+    @NotBlank(groups = PostDefaultGroup.class,message = "不能为空")
     private String name;
     private Integer age;
     private Integer sex;
-    @IDate(groups = PostGroup.class,message = "时间错误d1",min = "202204",max = "202206")
+    @IDate(groups = PostDefaultGroup.class,message = "时间错误d1",min = "202204",max = "202206")
     private Date d1;
-    @IDate (groups = PostGroup.class, message = "时间错误d2",min = "202204",max = "202206")
+    @IDate (groups = PostDefaultGroup.class, message = "时间错误d2",min = "202204",max = "202206")
     private String d2;
-    @IPhone(groups = PostGroup.class)
+    @IPhone(groups = PostDefaultGroup.class)
     private String phone;
-
-    @IIpAddress(groups = PostGroup.class)
+    @IIpAddress(groups = PostDefaultGroup.class)
     private String ip;
-
-
-    @IDomain(groups = PostGroup.class)
+    @IDomain(groups = PostDefaultGroup.class)
     private String domain;
+
+    @IIdCard
+    private String idCard;
+
+    @IAccount
+    private String user;
+    @IPassword
+    private String passwd;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPasswd() {
+        return passwd;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
 
     public String getDomain() {
         return domain;

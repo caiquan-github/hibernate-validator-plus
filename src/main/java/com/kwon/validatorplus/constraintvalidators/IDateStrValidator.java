@@ -2,10 +2,12 @@ package com.kwon.validatorplus.constraintvalidators;
 
 
 import com.google.auto.service.AutoService;
+import org.hibernate.validator.internal.engine.constraintvalidation.ConstraintValidatorContextImpl;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * String Type Date Validator
@@ -18,15 +20,20 @@ public class IDateStrValidator extends AbstractIDateValidator<CharSequence> {
 
     @Override
     public boolean isValid(CharSequence charSequence, ConstraintValidatorContext context) {
+        ConstraintValidatorContextImpl cvc = (ConstraintValidatorContextImpl) context;
+        Map<String, Object> attributes = cvc.getConstraintDescriptor().getAttributes();
+        String format = attributes.get("format").toString();
+        String min = attributes.get("min").toString();
+        String max = attributes.get("max").toString();
+
         Date value;
         if (charSequence == null) {
             value = null;
         } else {
-            value = super.stringToDate(charSequence.toString());
+            value = super.stringToDate(charSequence.toString(), format);
 
         }
-        setValue(value);
-        return isValid();
+        return isValid(value, max, min, format);
     }
 }
 

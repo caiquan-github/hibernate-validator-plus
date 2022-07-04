@@ -4,7 +4,6 @@ import org.hibernate.validator.internal.engine.constraintvalidation.ConstraintVa
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import javax.validation.metadata.ConstraintDescriptor;
 import java.lang.annotation.Annotation;
 import java.util.regex.Pattern;
 

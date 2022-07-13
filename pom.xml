@@ -42,7 +42,7 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>release</id>
+            <id>snapshots</id>
             <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
@@ -105,7 +105,7 @@
 <!--                <version>1.6.7</version>-->
 <!--                <extensions>true</extensions>-->
 <!--                <configuration>-->
-<!--                    <serverId>ossrh</serverId>-->
+<!--                    <serverId>snapshots</serverId>-->
 <!--                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>-->
 <!--                    <autoReleaseAfterClose>true</autoReleaseAfterClose>-->
 <!--                </configuration>-->

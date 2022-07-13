@@ -17,7 +17,7 @@
        <dependency>
             <groupId>io.github.caiquan-github</groupId>
             <artifactId>hibernate-validator-plus</artifactId>
-            <version>1.0</version>
+            <version>1.0.0</version>
         </dependency>
 ```
 

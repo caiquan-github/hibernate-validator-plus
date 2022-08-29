@@ -25,7 +25,5 @@
 
 如何使用
 
-​	
-
-[项目案例]: https://github.com/caiquan-github/hibernate-validator-plus-demo	"项目案例"
+​	https://github.com/caiquan-github/hibernate-validator-plus-demo 
 

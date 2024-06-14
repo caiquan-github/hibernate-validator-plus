@@ -20,8 +20,8 @@ public abstract class AbstractIDateValidator<T> implements ConstraintValidator<I
     public Date stringToDate(String str, String format) {
         try {
             Date result = null;
-            if (str != null && str.trim().length() > 0) {
-                if (format != null && format.trim().length() > 0) {
+            if (str != null && !str.trim().isEmpty()) {
+                if (format != null && !format.trim().isEmpty()) {
                     result = DateUtil.parse(str, format);
                 } else {
                     result = DateUtil.parse(str);

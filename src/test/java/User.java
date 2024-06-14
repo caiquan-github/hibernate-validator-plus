@@ -3,6 +3,7 @@ import com.kwon.validatorplus.groups.PostGroup;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.groups.Default;
+import java.io.File;
 import java.util.Date;
 
 /**
@@ -19,6 +20,19 @@ public class User {
     private String d2;
     @IPhone(groups = PostGroup.class)
     private String phone;
+    //车牌
+    @IlicensePlateNumber(groups = PostGroup.class)
+    private String lpn;
+
+
+    @IFile(groups = PostGroup.class,fileNameSuffix = {"jpg","jpeg","png"})
+    private String fileName;
+
+    @IFile(groups = PostGroup.class,fileSize = 1024*200)
+    private File file;
+
+
+
     @IIpAddress(groups = PostGroup.class)
     private String ip;
     @IDomain(groups = PostGroup.class)
@@ -31,6 +45,22 @@ public class User {
     private String user;
     @IPassword
     private String passwd;
+
+    public  File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public String getUser() {
         return user;
@@ -118,5 +148,13 @@ public class User {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public String getLpn() {
+        return lpn;
+    }
+
+    public void setLpn(String lpn) {
+        this.lpn = lpn;
     }
 }

@@ -8,6 +8,7 @@ import javax.validation.ConstraintValidator;
 import java.util.Date;
 
 /**
+ * 抽象类 日期验证器
  * @author Kwon
  */
 public abstract class AbstractIDateValidator<T> implements ConstraintValidator<IDate, T> {

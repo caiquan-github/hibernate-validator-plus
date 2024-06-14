@@ -8,6 +8,7 @@ import java.lang.annotation.Annotation;
 import java.util.regex.Pattern;
 
 /**
+ *  抽象类 正则验证器
  * @author Kwon
  */
 public abstract class AbstractIPatternValidator<T extends Annotation> implements ConstraintValidator<T, CharSequence> {
@@ -18,7 +19,7 @@ public abstract class AbstractIPatternValidator<T extends Annotation> implements
     public boolean isValid(CharSequence charSequence, ConstraintValidatorContext context) {
         ConstraintValidatorContextImpl cvc=(ConstraintValidatorContextImpl) context;
         String regexp=cvc.getConstraintDescriptor().getAttributes().get("regexp").toString();
-        if (charSequence != null && charSequence.toString().trim().length() > 0) {
+        if (charSequence != null && !charSequence.toString().trim().isEmpty()) {
             return Pattern.matches(regexp, charSequence);
         }
         return true;
